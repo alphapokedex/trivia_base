@@ -1,0 +1,39 @@
+name: trivia_base
+description: An internship task for making a trivia application using the open
+  trivia database API. Showcasing the MVC folder structure along with provider
+  state management. The project will be documented as much as possible,
+  favouring the intellisense on almost all the IDEs. I will include proper
+  linting rules and awesome UI.
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore: ^2.2.0
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^1.2.0
+  firebase_core: ^1.2.0
+  font_awesome_flutter: ^9.0.0
+  get: ^4.1.4
+  google_sign_in: ^5.0.4
+  html_unescape: ^2.0.0
+  http: ^0.13.3
+  lint: ^1.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/login_bg.jpg
+  fonts:
+    - family: Comfortaa
+      fonts:
+        - asset: assets/Comfortaa-VariableFont.ttf
