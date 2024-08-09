@@ -6,8 +6,6 @@ class TriviaBaseAppThemeData {
       surface: Color(0xff4a148c),
       secondary: Color(0xffff80ab),
       onSurface: Color(0xff4a148c),
-      secondaryVariant: Color(0xffffb2dd),
-      primaryVariant: Color(0xff4a148c),
       onBackground: Colors.grey.shade400,
       brightness: Brightness.light,
       primary: Color(0xff4a148c),
@@ -20,8 +18,6 @@ class TriviaBaseAppThemeData {
     primaryColor: Color(0xff4a148c),
     primaryColorLight: Color(0xff7c43bd),
     primaryColorDark: Color(0xff12005e),
-    accentColor: Color(0xffff80ab),
-    accentColorBrightness: Brightness.light,
     fontFamily: Literals.fontFamily,
   );
 }

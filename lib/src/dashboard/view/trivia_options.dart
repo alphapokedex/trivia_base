@@ -21,7 +21,7 @@ class TriviaOptionsSheet extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 category.name,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
             SizedBox(height: 10.0),

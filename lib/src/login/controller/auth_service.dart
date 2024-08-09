@@ -18,7 +18,7 @@ class AuthenticationService extends GetxService {
   /// as well as sets the [uid] for further use in the application
   static Future gSignIn() async {
     UserCredential userInfo = await signInWithGoogle();
-    print("SIGN IN GOOGLE: " + userInfo.toString());
+    debugPrint("SIGN IN GOOGLE: " + userInfo.toString());
     User user = userInfo.user!;
     _firestoreService.setUid(user.uid);
     await _firestoreService.initUser(
@@ -52,7 +52,7 @@ class AuthenticationService extends GetxService {
           .signInWithEmailAndPassword(email: email, password: password)
           .then(
         (UserCredential userInfo) async {
-          print("SIGN IN EMAIL: " + userInfo.toString());
+          debugPrint("SIGN IN EMAIL: " + userInfo.toString());
           User? user = userInfo.user;
           _firestoreService.setUid(user!.uid);
           await _firestoreService.initUser(
@@ -61,15 +61,6 @@ class AuthenticationService extends GetxService {
             email: user.email.toString(),
           );
           return userInfo;
-        },
-      ).catchError(
-        (error) {
-          Get.snackbar(
-            "Error Occured!",
-            error.toString(),
-            colorText: Colors.white,
-            backgroundColor: Colors.black,
-          );
         },
       );
     } catch (error) {
@@ -91,7 +82,7 @@ class AuthenticationService extends GetxService {
           .then(
         (UserCredential? userInfo) async {
           if (userInfo != null) {
-            print("SIGN UP: " + userInfo.toString());
+            debugPrint("SIGN UP: " + userInfo.toString());
             User user = userInfo.user!;
             _firestoreService.setUid(user.uid);
             await _firestoreService.initUser(
@@ -101,15 +92,6 @@ class AuthenticationService extends GetxService {
             );
             return userInfo;
           }
-        },
-      ).catchError(
-        (error) {
-          Get.snackbar(
-            "Error Occured!",
-            error.message,
-            colorText: Colors.white,
-            backgroundColor: Colors.black,
-          );
         },
       );
     } catch (error) {

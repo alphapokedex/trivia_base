@@ -19,7 +19,7 @@ class ResultView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme theme = Theme.of(context).textTheme;
-    TextStyle heading = theme.bodyText1!.copyWith(fontSize: 18);
+    TextStyle heading = theme.bodyLarge!.copyWith(fontSize: 18);
     FirestoreServices controller = Get.find(tag: Literals.fsTag);
     controller.addResult(
       startTime: startTime,
@@ -33,7 +33,7 @@ class ResultView extends StatelessWidget {
     Timer.periodic(
       Duration(seconds: 1),
       (Timer clock) {
-        print(clock.tick);
+        debugPrint(clock.tick.toString());
         if (clock.tick > 5) {
           clock.cancel();
           Get.back();
@@ -48,7 +48,7 @@ class ResultView extends StatelessWidget {
             Spacer(flex: 2),
             Text(
               score > wrongAnswers ? Literals.kudos : Literals.readMore,
-              style: theme.headline5!.copyWith(
+              style: theme.headlineSmall!.copyWith(
                 color: score > wrongAnswers ? Colors.green : Colors.red,
               ),
             ),

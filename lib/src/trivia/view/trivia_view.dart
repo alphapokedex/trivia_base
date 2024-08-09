@@ -29,7 +29,7 @@ class TriviaView extends StatelessWidget {
 
     indexController.setQuestions(questions);
 
-    print("Before Completion" + indexController.checkCompletion.toString());
+    debugPrint("Before Completion" + indexController.checkCompletion.toString());
 
     return GetBuilder<IndexController>(
       init: indexController,
@@ -38,26 +38,27 @@ class TriviaView extends StatelessWidget {
 
         var options = controller.optionsList();
 
-        /// [onWillPop] saves the current question set in the
+        /// [onPopInvoked] saves the current question set in the
         /// database in case the user decides to leave
         /// without completing trivia.
-        return WillPopScope(
-          onWillPop: () async {
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {
+            if (!didPop) return;
             /// Finds the [FirestoreService] dependancy we injected
             /// at the start of the App life cycle.
             FirestoreServices storeController = Get.find(
               tag: Literals.fsTag,
             );
             if (!controller.checkCompletion && upload) {
-              print("Marking incomplete and adding to user db");
+              debugPrint("Marking incomplete and adding to user db");
 
-              await storeController.addTrivia(
+              storeController.addTrivia(
                 categoryName: categoryName,
                 incompleteTriviaQuestionSet:
                     controller.getIncompleteQuestionSet,
               );
             }
-            return true;
           },
           child: Scaffold(
             appBar: AppBar(
@@ -78,7 +79,7 @@ class TriviaView extends StatelessWidget {
                     child: Text(
                       charCode.convert(
                           controller.getSingleQuestion.question.toString()),
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       softWrap: true,
                     ),
                   ),
