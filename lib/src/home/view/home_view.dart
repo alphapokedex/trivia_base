@@ -1,6 +1,8 @@
 import 'package:trivia_base/src/src.dart';
 
 class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final firebaseUser = Get.find<AuthenticationService>(tag: Literals.asTag);
@@ -13,7 +15,7 @@ class HomeView extends StatelessWidget {
             email: user.email,
           );
         }
-        return LoginView();
+        return const LoginView();
       },
     );
   }

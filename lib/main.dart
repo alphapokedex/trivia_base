@@ -24,5 +24,5 @@ void main() async {
   /// Initializes the DEFAULT app for Firebase and configures it
   /// for safe connection between application and the Firebase APIs.
   await Firebase.initializeApp();
-  runApp(TriviaBaseApp());
+  runApp(const TriviaBaseApp());
 }

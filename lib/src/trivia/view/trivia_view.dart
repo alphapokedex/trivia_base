@@ -8,12 +8,12 @@ class TriviaView extends StatelessWidget {
   /// and [triviaDocId] for when the incomplete trivia coming
   /// from database has to be deleted once completed.
   TriviaView({
-    Key? key,
+    super.key,
     required this.categoryName,
     required this.questions,
     this.upload = true,
     this.triviaDocId = "",
-  }) : super(key: key);
+  });
 
   final String categoryName;
   final List<Question> questions;
@@ -29,7 +29,7 @@ class TriviaView extends StatelessWidget {
 
     indexController.setQuestions(questions);
 
-    debugPrint("Before Completion" + indexController.checkCompletion.toString());
+    debugPrint("Before Completion${indexController.checkCompletion}");
 
     return GetBuilder<IndexController>(
       init: indexController,
@@ -63,7 +63,7 @@ class TriviaView extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
-              title: Text(Literals.appTitle),
+              title: const Text(Literals.appTitle),
             ),
             body: Column(
               children: [
@@ -94,7 +94,7 @@ class TriviaView extends StatelessWidget {
                         ),
                       ),
                     )
-                    .toList(),
+                    ,
               ],
             ),
           ),

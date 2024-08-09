@@ -2,9 +2,9 @@ import 'package:trivia_base/src/src.dart';
 
 class DashboardDrawer extends StatelessWidget {
   const DashboardDrawer({
-    Key? key,
+    super.key,
     required this.email,
-  }) : super(key: key);
+  });
 
   final String email;
 
@@ -14,7 +14,7 @@ class DashboardDrawer extends StatelessWidget {
       child: Column(
         children: [
           UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(Literals.loginImage),
                 fit: BoxFit.cover,
@@ -22,11 +22,11 @@ class DashboardDrawer extends StatelessWidget {
             ),
             accountEmail: Text(email),
             accountName: Container(),
-            currentAccountPictureSize: Size(80, 80),
+            currentAccountPictureSize: const Size(80, 80),
             currentAccountPicture: Center(
               child: Text(
                 email.substring(0, 1).toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   decorationColor: Colors.lightGreen,
                   shadows: [
@@ -41,22 +41,22 @@ class DashboardDrawer extends StatelessWidget {
             ),
           ),
           TextButton.icon(
-            icon: FaIcon(FontAwesomeIcons.listAlt),
-            label: Text(Literals.scoreboardBText),
+            icon: const FaIcon(FontAwesomeIcons.listAlt),
+            label: const Text(Literals.scoreboardBText),
             onPressed: () {
-              Get.to(() => TriviaScoreboardView());
+              Get.to(() => const TriviaScoreboardView());
             },
           ),
           TextButton.icon(
-            icon: FaIcon(FontAwesomeIcons.quora),
-            label: Text(Literals.triviaBText),
+            icon: const FaIcon(FontAwesomeIcons.quora),
+            label: const Text(Literals.triviaBText),
             onPressed: () {
-              Get.to(() => IncompleteTriviaView());
+              Get.to(() => const IncompleteTriviaView());
             },
           ),
           TextButton.icon(
-            icon: FaIcon(FontAwesomeIcons.signOutAlt),
-            label: Text(Literals.logoutBText),
+            icon: const FaIcon(FontAwesomeIcons.signOutAlt),
+            label: const Text(Literals.logoutBText),
             onPressed: () {
               AuthenticationService(FirebaseAuth.instance).signOut();
             },

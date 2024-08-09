@@ -4,12 +4,12 @@ class ResultView extends StatelessWidget {
   /// ResultView is a screen to show the result of the currently
   /// completed trivia in a presentable manner.
   const ResultView({
-    Key? key,
+    super.key,
     required this.startTime,
     required this.score,
     required this.wrongAnswers,
     required this.percentage,
-  }) : super(key: key);
+  });
 
   final DateTime startTime;
   final int score;
@@ -31,7 +31,7 @@ class ResultView extends StatelessWidget {
     /// Returns the user to the dashboard after 5 seconds
     /// and stops/disposes the ticker
     Timer.periodic(
-      Duration(seconds: 1),
+      const Duration(seconds: 1),
       (Timer clock) {
         debugPrint(clock.tick.toString());
         if (clock.tick > 5) {
@@ -45,14 +45,14 @@ class ResultView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             Text(
               score > wrongAnswers ? Literals.kudos : Literals.readMore,
               style: theme.headlineSmall!.copyWith(
                 color: score > wrongAnswers ? Colors.green : Colors.red,
               ),
             ),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             Text(
               Literals.correct,
               style: heading,
@@ -60,7 +60,7 @@ class ResultView extends StatelessWidget {
             Text(
               score.toString(),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               Literals.wrong,
               style: heading,
@@ -68,7 +68,7 @@ class ResultView extends StatelessWidget {
             Text(
               wrongAnswers.toString(),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               Literals.pAge,
               style: heading,
@@ -76,7 +76,7 @@ class ResultView extends StatelessWidget {
             Text(
               percentage.toString(),
             ),
-            Spacer(flex: 3),
+            const Spacer(flex: 3),
           ],
         ),
       ),

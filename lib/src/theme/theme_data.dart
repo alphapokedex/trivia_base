@@ -3,21 +3,21 @@ import 'package:trivia_base/src/src.dart';
 class TriviaBaseAppThemeData {
   static ThemeData purplePop = ThemeData(
     colorScheme: ColorScheme(
-      surface: Color(0xff4a148c),
-      secondary: Color(0xffff80ab),
-      onSurface: Color(0xff4a148c),
+      surface: const Color(0xff4a148c),
+      secondary: const Color(0xffff80ab),
+      onSurface: const Color(0xff4a148c),
       onBackground: Colors.grey.shade400,
       brightness: Brightness.light,
-      primary: Color(0xff4a148c),
-      onPrimary: Color(0xffffffff),
-      background: Color(0xff4a148c),
+      primary: const Color(0xff4a148c),
+      onPrimary: const Color(0xffffffff),
+      background: const Color(0xff4a148c),
       error: Colors.white,
-      onSecondary: Color(0xff000000),
+      onSecondary: const Color(0xff000000),
       onError: Colors.red,
     ),
-    primaryColor: Color(0xff4a148c),
-    primaryColorLight: Color(0xff7c43bd),
-    primaryColorDark: Color(0xff12005e),
+    primaryColor: const Color(0xff4a148c),
+    primaryColorLight: const Color(0xff7c43bd),
+    primaryColorDark: const Color(0xff12005e),
     fontFamily: Literals.fontFamily,
   );
 }

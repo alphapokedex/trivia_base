@@ -8,10 +8,10 @@ class CategoryTile extends StatelessWidget {
   /// And a callback function which is specific
   /// for triggering a [BottomSheet] on [DashboardView].
   const CategoryTile({
-    Key? key,
+    super.key,
     required this.categoryName,
     required this.sheetCallback,
-  }) : super(key: key);
+  });
   
   final String categoryName;
   final Function() sheetCallback;

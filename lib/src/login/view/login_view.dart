@@ -1,10 +1,12 @@
 import 'package:trivia_base/src/src.dart';
 
 class LoginView extends StatelessWidget {
+  const LoginView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    FocusNode _passwordNode = FocusNode();
-    OutlineInputBorder textInputBorder = OutlineInputBorder(
+    FocusNode passwordNode = FocusNode();
+    OutlineInputBorder textInputBorder = const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         color: Colors.white,
@@ -18,7 +20,7 @@ class LoginView extends StatelessWidget {
         body: Form(
           key: controller.formKey,
           child: DecoratedBox(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(Literals.loginImage),
                 fit: BoxFit.cover,
@@ -29,7 +31,7 @@ class LoginView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Spacer(flex: 2),
+                const Spacer(flex: 2),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
@@ -37,13 +39,13 @@ class LoginView extends StatelessWidget {
                     cursorColor: Colors.white,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    style: const TextStyle(fontSize: 18, color: Colors.white),
                     decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 15),
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelText: Literals.emailLabel,
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Colors.white,
                       ),
                       border: textInputBorder,
@@ -51,7 +53,7 @@ class LoginView extends StatelessWidget {
                       focusedErrorBorder: textInputBorder,
                       errorBorder: textInputBorder,
                       enabledBorder: textInputBorder,
-                      errorStyle: TextStyle(
+                      errorStyle: const TextStyle(
                         color: Colors.white,
                       ),
                       fillColor: Colors.white,
@@ -64,14 +66,14 @@ class LoginView extends StatelessWidget {
                     },
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
                     controller: controller.passCtrlr,
-                    focusNode: _passwordNode,
+                    focusNode: passwordNode,
                     textInputAction: TextInputAction.send,
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    style: const TextStyle(fontSize: 18, color: Colors.white),
                     onFieldSubmitted: (String value) {
                       if (controller.formKey.currentState.validate()) {
                         AuthenticationService authObj =
@@ -101,7 +103,7 @@ class LoginView extends StatelessWidget {
                           const EdgeInsets.symmetric(horizontal: 15),
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelText: Literals.passwordLabel,
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Colors.white,
                       ),
                       border: textInputBorder,
@@ -109,7 +111,7 @@ class LoginView extends StatelessWidget {
                       focusedErrorBorder: textInputBorder,
                       errorBorder: textInputBorder,
                       enabledBorder: textInputBorder,
-                      errorStyle: TextStyle(
+                      errorStyle: const TextStyle(
                         color: Colors.white,
                       ),
                       fillColor: Colors.white,
@@ -122,14 +124,14 @@ class LoginView extends StatelessWidget {
                     },
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 SwitchListTile.adaptive(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 40),
                   dense: true,
                   inactiveTrackColor: Colors.grey,
                   title: Text(
                     controller.updatedBool ? Literals.signin : Literals.signup,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       letterSpacing: 2,
                     ),
@@ -139,16 +141,16 @@ class LoginView extends StatelessWidget {
                   value: controller.updatedBool,
                   onChanged: controller.onChange,
                 ),
-                Spacer(),
-                Stack(
+                const Spacer(),
+                const Stack(
                   children: [
-                    const Divider(
+                    Divider(
                       color: Colors.white30,
                       thickness: 2,
                       indent: 90,
                       endIndent: 90,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.center,
                       child: Text(
                         Literals.orText,
@@ -159,7 +161,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 OutlinedButton.icon(
                   onPressed: AuthenticationService.gSignIn,
                   label: const Text(Literals.loginWithGoogle),
@@ -171,7 +173,7 @@ class LoginView extends StatelessWidget {
                         MaterialStateProperty.all<Color>(Colors.white),
                   ),
                 ),
-                Spacer(flex: 2),
+                const Spacer(flex: 2),
               ],
             ),
           ),

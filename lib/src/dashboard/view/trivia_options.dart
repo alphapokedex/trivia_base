@@ -2,9 +2,9 @@ import 'package:trivia_base/src/src.dart';
 
 class TriviaOptionsSheet extends StatelessWidget {
   const TriviaOptionsSheet({
-    Key? key,
+    super.key,
     required this.category,
-  }) : super(key: key);
+  });
 
   final Category category;
 
@@ -24,8 +24,8 @@ class TriviaOptionsSheet extends StatelessWidget {
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
-            SizedBox(height: 10.0),
-            Text(Literals.noOfQuestions),
+            const SizedBox(height: 10.0),
+            const Text(Literals.noOfQuestions),
             SizedBox(
               width: double.infinity,
               child: Wrap(
@@ -36,7 +36,7 @@ class TriviaOptionsSheet extends StatelessWidget {
                     (element) => ActionChip(
                       label: Text(element.toString()),
                       labelPadding: const EdgeInsets.symmetric(horizontal: 8),
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
                       backgroundColor: controller.getNoOfQuestions == element
                           ? Colors.black
                           : Colors.grey,
@@ -47,8 +47,8 @@ class TriviaOptionsSheet extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20.0),
-            Text(Literals.difficulty),
+            const SizedBox(height: 20.0),
+            const Text(Literals.difficulty),
             SizedBox(
               width: double.infinity,
               child: Wrap(
@@ -59,7 +59,7 @@ class TriviaOptionsSheet extends StatelessWidget {
                   ...Literals.difficultyTypes.map(
                     (element) => ActionChip(
                       label: Text(element),
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
                       backgroundColor: controller.getDifficulty ==
                               (element != Literals.anyType
                                   ? element.toLowerCase()
@@ -76,14 +76,14 @@ class TriviaOptionsSheet extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             controller.getProcessing
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : ElevatedButton(
-                    child: Text(Literals.startTrivia),
+                    child: const Text(Literals.startTrivia),
                     onPressed: () => controller.startTrivia(category),
                   ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),

@@ -35,8 +35,8 @@ class Question {
   });
 
   String category;
-  Type type;
-  Difficulty difficulty;
+  String type;
+  String difficulty;
   String question;
   String correctAnswer;
   List<String> incorrectAnswers;
@@ -44,8 +44,8 @@ class Question {
   /// converts a single [Map<String, dynamic>] object into a [Question] object
   factory Question.fromJson(Map<String, dynamic> json) => Question(
         category: json["category"],
-        type: typeValues.map[json["type"]]!,
-        difficulty: difficultyValues.map[json["difficulty"]]!,
+        type: json["type"],
+        difficulty: json["difficulty"],
         question: json["question"],
         correctAnswer: json["correct_answer"],
         incorrectAnswers:
@@ -55,39 +55,24 @@ class Question {
   /// converts a single [Question] object into a [Map<String, dynamic>] object
   Map<String, dynamic> toJson() => {
         "category": category,
-        "type": typeValues.reverse?[type],
-        "difficulty": difficultyValues.reverse?[difficulty],
+        "type": type,
+        "difficulty": difficulty,
         "question": question,
         "correct_answer": correctAnswer,
         "incorrect_answers": List<dynamic>.from(incorrectAnswers.map((x) => x)),
       };
 }
 
-enum Difficulty { HARD, MEDIUM, EASY }
+extension QuestionX on Question  {
+  Type get parsedType {
+    return Type.values.firstWhere((e) => e.name == type);
+  }
 
-final difficultyValues = EnumValues({
-  "easy": Difficulty.EASY,
-  "hard": Difficulty.HARD,
-  "medium": Difficulty.MEDIUM
-});
-
-enum Type { MULTIPLE, BOOLEAN }
-
-final typeValues =
-    EnumValues({"boolean": Type.BOOLEAN, "multiple": Type.MULTIPLE});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String>? reverseMap;
-
-  EnumValues(this.map);
-
-  /// Reverses the map key pair for the
-  /// smooth conversion in [Object.toJson()]
-  Map<T, String>? get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
+  Difficulty get parsedDifficulty {
+    return Difficulty.values.firstWhere((e) => e.name == type);
   }
 }
+
+enum Difficulty { hard, medium, easy }
+
+enum Type { multiple, boolean }

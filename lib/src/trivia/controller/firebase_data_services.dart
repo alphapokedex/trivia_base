@@ -50,7 +50,7 @@ class FirestoreServices extends GetxService {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => debugPrint("Added new trivia to $_uid\'s collection"))
+        .whenComplete(() => debugPrint("Added new trivia to $_uid's collection"))
         .catchError((e) => debugPrint(e));
   }
 
@@ -77,7 +77,7 @@ class FirestoreServices extends GetxService {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => debugPrint("Added new result to $_uid\'s collection"))
+        .whenComplete(() => debugPrint("Added new result to $_uid's collection"))
         .catchError((e) => debugPrint(e));
   }
 
