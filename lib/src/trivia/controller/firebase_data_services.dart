@@ -25,8 +25,8 @@ class FirestoreServices extends GetxService {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => print("Added $_uid in the collection "))
-        .catchError((e) => print(e));
+        .whenComplete(() => debugPrint("Added $_uid in the collection "))
+        .catchError((e) => debugPrint(e));
   }
 
   /// Takes [categoryName] which is category name [String]
@@ -50,8 +50,8 @@ class FirestoreServices extends GetxService {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => print("Added new trivia to $_uid\'s collection"))
-        .catchError((e) => print(e));
+        .whenComplete(() => debugPrint("Added new trivia to $_uid's collection"))
+        .catchError((e) => debugPrint(e));
   }
 
   /// Adds the result mainly time in [Seconds], [Score],
@@ -77,8 +77,8 @@ class FirestoreServices extends GetxService {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => print("Added new result to $_uid\'s collection"))
-        .catchError((e) => print(e));
+        .whenComplete(() => debugPrint("Added new result to $_uid's collection"))
+        .catchError((e) => debugPrint(e));
   }
 
   /// Returns a stream of all the results present in the collection
@@ -108,7 +108,7 @@ class FirestoreServices extends GetxService {
 
     await documentReferencer
         .delete()
-        .whenComplete(() => print('Trivia deleted from $_uid\'s collection'))
-        .catchError((e) => print(e));
+        .whenComplete(() => debugPrint('Trivia deleted from $_uid\'s collection'))
+        .catchError((e) => debugPrint(e));
   }
 }

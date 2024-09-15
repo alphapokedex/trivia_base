@@ -8,12 +8,12 @@ class TriviaView extends StatelessWidget {
   /// and [triviaDocId] for when the incomplete trivia coming
   /// from database has to be deleted once completed.
   TriviaView({
-    Key? key,
+    super.key,
     required this.categoryName,
     required this.questions,
     this.upload = true,
     this.triviaDocId = "",
-  }) : super(key: key);
+  });
 
   final String categoryName;
   final List<Question> questions;
@@ -29,7 +29,7 @@ class TriviaView extends StatelessWidget {
 
     indexController.setQuestions(questions);
 
-    print("Before Completion" + indexController.checkCompletion.toString());
+    debugPrint("Before Completion${indexController.checkCompletion}");
 
     return GetBuilder<IndexController>(
       init: indexController,
@@ -38,31 +38,32 @@ class TriviaView extends StatelessWidget {
 
         var options = controller.optionsList();
 
-        /// [onWillPop] saves the current question set in the
+        /// [onPopInvoked] saves the current question set in the
         /// database in case the user decides to leave
         /// without completing trivia.
-        return WillPopScope(
-          onWillPop: () async {
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {
+            if (!didPop) return;
             /// Finds the [FirestoreService] dependancy we injected
             /// at the start of the App life cycle.
             FirestoreServices storeController = Get.find(
               tag: Literals.fsTag,
             );
             if (!controller.checkCompletion && upload) {
-              print("Marking incomplete and adding to user db");
+              debugPrint("Marking incomplete and adding to user db");
 
-              await storeController.addTrivia(
+              storeController.addTrivia(
                 categoryName: categoryName,
                 incompleteTriviaQuestionSet:
                     controller.getIncompleteQuestionSet,
               );
             }
-            return true;
           },
           child: Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
-              title: Text(Literals.appTitle),
+              title: const Text(Literals.appTitle),
             ),
             body: Column(
               children: [
@@ -78,7 +79,7 @@ class TriviaView extends StatelessWidget {
                     child: Text(
                       charCode.convert(
                           controller.getSingleQuestion.question.toString()),
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       softWrap: true,
                     ),
                   ),
@@ -93,7 +94,7 @@ class TriviaView extends StatelessWidget {
                         ),
                       ),
                     )
-                    .toList(),
+                    ,
               ],
             ),
           ),

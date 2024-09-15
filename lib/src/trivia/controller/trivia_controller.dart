@@ -34,9 +34,9 @@ class IndexController extends GetxController {
 
   /// Setting a single question set in memory for the current trivia.
   setQuestions(questionsList) {
-    print("Setting start time");
+    debugPrint("Setting start time");
     setStartTime();
-    print("Set question list of length: ${questionsList.length}");
+    debugPrint("Set question list of length: ${questionsList.length}");
     questions = questionsList;
   }
 
@@ -45,23 +45,23 @@ class IndexController extends GetxController {
   updateScore(String answer) {
     if (answer == question.correctAnswer) {
       score.value++;
-      print("Correct answer count: ${score.value}");
+      debugPrint("Correct answer count: ${score.value}");
     } else {
       wrong.value++;
-      print("Wrong answer count: ${wrong.value}");
+      debugPrint("Wrong answer count: ${wrong.value}");
     }
   }
 
   /// returns the value for the progress bar
   double getProgressValue() {
-    print("Progress bar value: ${getCurrentIndex / questions.length}");
+    debugPrint("Progress bar value: ${getCurrentIndex / questions.length}");
     return getCurrentIndex / questions.length;
   }
 
   /// Setting a single question out of the set based on
   /// the current index.
   setSingleQue() {
-    print("Set single question from the list");
+    debugPrint("Set single question from the list");
     question = questions[currentIndex.value];
   }
 
@@ -69,8 +69,8 @@ class IndexController extends GetxController {
   List<Question> get getIncompleteQuestionSet => questions;
 
   double getPercentage() {
-    print("Getting percentage");
-    print(score.value / questions.length);
+    debugPrint("Getting percentage");
+    debugPrint((score.value / questions.length).toString());
     return score.value / questions.length * 100;
   }
 
@@ -79,12 +79,12 @@ class IndexController extends GetxController {
   /// then the user is navigated to the results screen along
   /// with appropriate arguments.
   updateIndex(String answer, String triviaDocId) async {
-    print("Index updated");
+    debugPrint("Index updated");
     if (currentIndex.value < questions.length - 1) {
       currentIndex.value++;
-      print(currentIndex.value.toString());
+      debugPrint(currentIndex.value.toString());
       updateScore(answer);
-      print("==> Updating UI");
+      debugPrint("==> Updating UI");
       update();
     } else {
       FirestoreServices storeController = Get.find(
@@ -92,11 +92,11 @@ class IndexController extends GetxController {
       );
       updateScore(answer);
       markComplete();
-      print("Redirect to results view");
-      print(
+      debugPrint("Redirect to results view");
+      debugPrint(
           "Score ${score.value}, Wrong ${wrong.value}, %age ${getPercentage()}");
       if (triviaDocId.isNotEmpty) {
-        print("Deleting $triviaDocId");
+        debugPrint("Deleting $triviaDocId");
         await storeController.deleteTrivia(docId: triviaDocId);
       }
       Get.off(

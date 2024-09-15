@@ -1,29 +1,33 @@
 import 'package:trivia_base/src/src.dart';
 
 class IncompleteTriviaView extends StatelessWidget {
+  const IncompleteTriviaView({super.key});
+
   @override
   Widget build(BuildContext context) {
     FirestoreServices controller =
         Get.find<FirestoreServices>(tag: Literals.fsTag);
     return Scaffold(
       appBar: AppBar(
-        title: Text(Literals.triviaBText),
+        title: const Text(Literals.triviaBText),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: controller.getIncompleteTrivias(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData &&
-              snapshot.connectionState == ConnectionState.waiting)
-            return Center(
+              snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
               child: CircularProgressIndicator(),
             );
+          }
           if (snapshot.hasData &&
               snapshot.connectionState == ConnectionState.active) {
             List? trivialist = snapshot.data!.docs;
-            if (trivialist.isEmpty)
-              return Center(
+            if (trivialist.isEmpty) {
+              return const Center(
                 child: Text(Literals.good),
               );
+            }
             return ListView.builder(
               itemCount: trivialist.length,
               itemBuilder: (BuildContext context, int index) {
@@ -45,7 +49,7 @@ class IncompleteTriviaView extends StatelessWidget {
               },
             );
           }
-          return Center(
+          return const Center(
             child: Text(Literals.noData),
           );
         },

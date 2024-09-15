@@ -2,9 +2,9 @@ import 'package:trivia_base/src/src.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({
-    Key? key,
+    super.key,
     required this.email,
-  }) : super(key: key);
+  });
 
   final String? email;
 
@@ -22,7 +22,7 @@ class DashboardView extends StatelessWidget {
             expandedHeight: 180,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(Literals.categoryTitle),
+              title: const Text(Literals.categoryTitle),
               background: Image.network(
                 Literals.randomImage,
                 fit: BoxFit.cover,
@@ -47,7 +47,7 @@ class DashboardView extends StatelessWidget {
                         ),
                       ),
                     )
-                    .toList(),
+                    ,
               ],
             ),
           ),

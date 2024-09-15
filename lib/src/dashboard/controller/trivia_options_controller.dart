@@ -1,8 +1,8 @@
 import 'package:trivia_base/src/src.dart';
 
 class TriviaOptionsController extends GetxController {
-  var _noOfQuestions = 10.obs;
-  var _difficulty = "easy".obs;
+  final _noOfQuestions = 10.obs;
+  final _difficulty = "easy".obs;
   var processing = false.obs;
 
   int get getNoOfQuestions => _noOfQuestions.value;
@@ -37,7 +37,7 @@ class TriviaOptionsController extends GetxController {
 
       /// If not enough questions then throws error to the user
       /// and returns without going futher.
-      if (questions.length < 1) {
+      if (questions.isEmpty) {
         Get.snackbar(
           Literals.notEnoughQues,
           Literals.notEnoughElaborated,
