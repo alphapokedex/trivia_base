@@ -168,9 +168,9 @@ class LoginView extends StatelessWidget {
                   icon: const FaIcon(FontAwesomeIcons.google),
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white10),
+                        WidgetStateProperty.all<Color>(Colors.white10),
                     foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
+                        WidgetStateProperty.all<Color>(Colors.white),
                   ),
                 ),
                 const Spacer(flex: 2),
