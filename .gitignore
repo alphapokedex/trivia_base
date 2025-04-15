@@ -45,3 +45,6 @@ app.*.map.json
 
 # VSCode
 .vscode/
+
+# unknown
+.metadata
