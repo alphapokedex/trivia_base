@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "512785665284",
+    "project_id": "todo-51632",
+    "storage_bucket": "todo-51632.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512785665284:android:190c40f9f5c2c267511451",
+        "android_client_info": {
+          "package_name": "io.github.alphapokedex.trivia_base"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH-zTQkarezPz-Vi-o4ct0CygyjPKfEAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

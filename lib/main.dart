@@ -1,5 +1,7 @@
 import 'package:trivia_base/src/src.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   /// Returns an instance of the WidgetsBinding, creating and initializing it
   /// if necessary. If one is created, it will be a WidgetsFlutterBinding. If
@@ -23,6 +25,6 @@ void main() async {
 
   /// Initializes the DEFAULT app for Firebase and configures it
   /// for safe connection between application and the Firebase APIs.
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const TriviaBaseApp());
 }
