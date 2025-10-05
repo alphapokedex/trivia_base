@@ -13,7 +13,7 @@ class IndexController extends GetxController {
 
   /// marks the trivia complete so it is
   /// not stored in the database for later.
-  markComplete() {
+  void markComplete() {
     isComplete = true;
   }
 
@@ -28,12 +28,12 @@ class IndexController extends GetxController {
   /// sets the start time of the trivia when it starts
   /// NOTE: the trivia's start time is not
   /// saved until the trivia is complete
-  setStartTime() {
+  void setStartTime() {
     _startTime = DateTime.now();
   }
 
   /// Setting a single question set in memory for the current trivia.
-  setQuestions(questionsList) {
+  void setQuestions(List<Question> questionsList) {
     debugPrint("Setting start time");
     setStartTime();
     debugPrint("Set question list of length: ${questionsList.length}");
@@ -42,7 +42,7 @@ class IndexController extends GetxController {
 
   /// Update score on each button/option press by the user.
   /// and is saved at the end when the user has completed the trivia
-  updateScore(String answer) {
+  void updateScore(String answer) {
     if (answer == question.correctAnswer) {
       score.value++;
       debugPrint("Correct answer count: ${score.value}");
@@ -60,7 +60,7 @@ class IndexController extends GetxController {
 
   /// Setting a single question out of the set based on
   /// the current index.
-  setSingleQue() {
+  void setSingleQue() {
     debugPrint("Set single question from the list");
     question = questions[currentIndex.value];
   }
@@ -78,7 +78,7 @@ class IndexController extends GetxController {
   /// If the user has completed all the quesitons present in the set
   /// then the user is navigated to the results screen along
   /// with appropriate arguments.
-  updateIndex(String answer, String triviaDocId) async {
+  Future<void> updateIndex(String answer, String triviaDocId) async {
     debugPrint("Index updated");
     if (currentIndex.value < questions.length - 1) {
       currentIndex.value++;

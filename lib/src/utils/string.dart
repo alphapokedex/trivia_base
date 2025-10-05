@@ -10,7 +10,7 @@ class Literals {
   static const String triviaBText = 'Incomplete Tivias';
   static const String triviaUrl = 'https://opentdb.com/api.php';
   static const String randomImage =
-      'https://source.unsplash.com/random/900x600/?greenary';
+      'https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?_gl=1*3vermu*_ga*MTEwMDMxNjI3MC4xNzU5Njg2NDI1*_ga_8JE65Q40S6*czE3NTk2ODY0MjQkbzEkZzEkdDE3NTk2ODY0NDEkajQzJGwwJGgw';
   static const String providePassword = 'Please provide a password!';
   static const String passwordLabel = 'Password';
   static const String verificationFailed = 'Validation failed!';

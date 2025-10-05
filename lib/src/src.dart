@@ -23,14 +23,12 @@ export 'package:get/get.dart'
         ExtensionDialog,
         ExtensionBottomSheet,
         GetNavigation;
-export 'package:google_sign_in/google_sign_in.dart';
 export 'package:html_unescape/html_unescape.dart';
 export 'package:http/http.dart' show get, Response;
 
 export './dashboard/dashboard.dart';
 export './home/home.dart';
 export './login/login.dart';
-export './theme/theme.dart';
 export './trivia/trivia.dart';
 export './trivia_base_app.dart';
 export './utils/regex.dart';

@@ -14,36 +14,6 @@ class AuthenticationService extends GetxService {
     await _firebaseAuth.signOut();
   }
 
-  /// Signs in the new or old user into the application
-  /// as well as sets the [uid] for further use in the application
-  static Future gSignIn() async {
-    UserCredential userInfo = await signInWithGoogle();
-    debugPrint("SIGN IN GOOGLE: $userInfo");
-    User user = userInfo.user!;
-    _firestoreService.setUid(user.uid);
-    await _firestoreService.initUser(
-      name: user.displayName.toString(),
-      email: user.photoURL.toString(),
-    );
-  }
-
-  static Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final googleAuth = await googleUser!.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
   /// signs in a user using the provider email and passowrd
   /// throws and error to the user if already registered
   Future signIn({required String email, required String password}) async {

@@ -18,16 +18,8 @@ class DashboardView extends StatelessWidget {
         slivers: [
           SliverAppBar(
             elevation: 15,
-            shadowColor: Colors.indigo,
-            expandedHeight: 180,
             pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: const Text(Literals.categoryTitle),
-              background: Image.network(
-                Literals.randomImage,
-                fit: BoxFit.cover,
-              ),
-            ),
+            title: Text(Literals.categoryTitle),
           ),
           SliverList(
             delegate: SliverChildListDelegate(

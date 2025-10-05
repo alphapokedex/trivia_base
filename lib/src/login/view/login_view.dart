@@ -66,7 +66,6 @@ class LoginView extends StatelessWidget {
                     },
                   ),
                 ),
-                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
@@ -75,7 +74,8 @@ class LoginView extends StatelessWidget {
                     textInputAction: TextInputAction.send,
                     style: const TextStyle(fontSize: 18, color: Colors.white),
                     onFieldSubmitted: (String value) {
-                      if (controller.formKey.currentState.validate()) {
+                      if (controller.formKey.currentState?.validate() ??
+                          false) {
                         AuthenticationService authObj =
                             AuthenticationService(FirebaseAuth.instance);
                         if (controller.updatedBool) {
@@ -124,7 +124,6 @@ class LoginView extends StatelessWidget {
                     },
                   ),
                 ),
-                const Spacer(),
                 SwitchListTile.adaptive(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 40),
                   dense: true,
@@ -141,39 +140,6 @@ class LoginView extends StatelessWidget {
                   value: controller.updatedBool,
                   onChanged: controller.onChange,
                 ),
-                const Spacer(),
-                const Stack(
-                  children: [
-                    Divider(
-                      color: Colors.white30,
-                      thickness: 2,
-                      indent: 90,
-                      endIndent: 90,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        Literals.orText,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                OutlinedButton.icon(
-                  onPressed: AuthenticationService.gSignIn,
-                  label: const Text(Literals.loginWithGoogle),
-                  icon: const FaIcon(FontAwesomeIcons.google),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white10),
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                  ),
-                ),
-                const Spacer(flex: 2),
               ],
             ),
           ),

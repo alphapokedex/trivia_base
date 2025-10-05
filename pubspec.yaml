@@ -9,23 +9,21 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.2.0-0 <4.0.0"
-  flutter: ^3.19.5
+  sdk: ">=3.5.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: ^2.2.0
+  cloud_firestore: ^6.0.2
   cupertino_icons: ^1.0.2
-  firebase_auth: ^1.2.0
-  firebase_core: ^1.2.0
-  flutter_lints: ^4.0.0
-  font_awesome_flutter: ^9.0.0
+  firebase_auth: ^6.1.0
+  firebase_core: ^4.1.1
+  flutter_lints: ^6.0.0
+  font_awesome_flutter: ^10.10.0
   get: ^4.1.4
-  google_sign_in: ^5.0.4
   html_unescape: ^2.0.0
-  http: ^0.13.3
-  lint: ^1.5.3
+  http: ^1.5.0
+  lint: ^2.8.0
 
 dev_dependencies:
   flutter_test:
@@ -34,7 +32,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/login_bg.jpg
+    - assets/
   fonts:
     - family: Comfortaa
       fonts:

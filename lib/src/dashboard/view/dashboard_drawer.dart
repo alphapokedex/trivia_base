@@ -41,7 +41,7 @@ class DashboardDrawer extends StatelessWidget {
             ),
           ),
           TextButton.icon(
-            icon: const FaIcon(FontAwesomeIcons.listAlt),
+            icon: const FaIcon(FontAwesomeIcons.rectangleList),
             label: const Text(Literals.scoreboardBText),
             onPressed: () {
               Get.to(() => const TriviaScoreboardView());
@@ -55,7 +55,7 @@ class DashboardDrawer extends StatelessWidget {
             },
           ),
           TextButton.icon(
-            icon: const FaIcon(FontAwesomeIcons.signOutAlt),
+            icon: const FaIcon(FontAwesomeIcons.rightFromBracket),
             label: const Text(Literals.logoutBText),
             onPressed: () {
               AuthenticationService(FirebaseAuth.instance).signOut();

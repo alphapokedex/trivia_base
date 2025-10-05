@@ -6,7 +6,7 @@ final CollectionReference _userCollection = _firestore.collection('users');
 class FirestoreServices extends GetxService {
   late String _uid;
 
-  setUid(String uid){
+  void setUid(String uid) {
     _uid = uid;
   }
 

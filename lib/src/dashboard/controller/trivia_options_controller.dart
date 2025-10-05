@@ -11,14 +11,14 @@ class TriviaOptionsController extends GetxController {
 
   /// selects the number of questions
   /// tapped by the user and updates UI
-  selectNumberOfQuestions(int i) {
+  void selectNumberOfQuestions(int i) {
     _noOfQuestions.value = i;
     update();
   }
 
   /// selects the difficulty tapped by the
   /// user and updates UI
-  selectDifficulty(String? s) {
+  void selectDifficulty(String? s) {
     _difficulty.value = s.toString();
     update();
   }
@@ -27,7 +27,7 @@ class TriviaOptionsController extends GetxController {
   /// when while listening to the [processing] boolean
   /// changes to indicate that the questions are loading
   /// and are done loading.
-  startTrivia(Category category) async {
+  Future<void> startTrivia(Category category) async {
     processing.value = true;
     update();
     try {

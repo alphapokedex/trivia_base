@@ -43,7 +43,7 @@ class TriviaView extends StatelessWidget {
         /// without completing trivia.
         return PopScope(
           canPop: false,
-          onPopInvoked: (didPop) {
+          onPopInvokedWithResult: (didPop, result) {
             if (!didPop) return;
             /// Finds the [FirestoreService] dependancy we injected
             /// at the start of the App life cycle.

@@ -11,7 +11,10 @@ class TriviaBaseApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fadeIn,
       title: Literals.appTitle,
-      theme: TriviaBaseAppThemeData.purplePop,
+      theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: Literals.fontFamily,
+      ),
       home: const HomeView(),
     );
   }

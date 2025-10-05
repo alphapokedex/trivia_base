@@ -1,3 +1,4 @@
+import 'package:trivia_base/firebase_options.dart';
 import 'package:trivia_base/src/src.dart';
 
 void main() async {
@@ -7,6 +8,10 @@ void main() async {
   /// You only need to call this method if you need the binding to be
   /// initialized before calling runApp.
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// Initializes the DEFAULT app for Firebase and configures it
+  /// for safe connection between application and the Firebase APIs.
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   /// Injects [FirestoreServices] Dependancy permanently into the memory
   /// until the app is alive.
@@ -21,8 +26,5 @@ void main() async {
     tag: Literals.asTag,
   );
 
-  /// Initializes the DEFAULT app for Firebase and configures it
-  /// for safe connection between application and the Firebase APIs.
-  await Firebase.initializeApp();
   runApp(const TriviaBaseApp());
 }
