@@ -22,7 +22,3 @@ subprojects {
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs += ["-Xlint:deprecation"]
-}
